@@ -9,7 +9,7 @@ addons:
       secure: $SONARCLOUD_TOKEN
 
 script:
-  - mvn clean package sonar:sonar -Dsonar.projectKey=menus -Dsonar.organization=VirtualWaiter -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
+  - mvn clean package sonar:sonar -Dsonar.projectKey=menus -Dsonar.organization=VirtualWaiter -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN ||true
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY

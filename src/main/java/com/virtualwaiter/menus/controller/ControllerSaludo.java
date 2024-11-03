@@ -13,4 +13,9 @@ public class ControllerSaludo {
     return "Hola mundo!";
   }
 
+  @GetMapping("/adios-mundo")
+  public String retrieveDespedida(){
+    return "Adios mundo!!";
+  }
+
 }
