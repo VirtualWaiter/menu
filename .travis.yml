@@ -1,0 +1,23 @@
+language: java
+jdk:
+  - openjdk11
+
+branches:
+  only:
+    - develop_release
+    - master
+
+script:
+  - ./mvnw clean install
+
+# Análisis con SonarCloud
+after_success:
+  - mvn sonar:sonar -Dsonar.projectKey=your_project_key -Dsonar.organization=your_organization -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+
+# Despliegue en OpenShift
+deploy:
+  provider: openshift
+  api_key: $OPENSHIFT_API_KEY
+  app: your-app-name
+  on:
+    branch: develop_release
