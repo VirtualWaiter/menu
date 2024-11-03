@@ -1,6 +1,13 @@
 language: java
 jdk:
   - openjdk17
+
+addons:
+  sonarcloud:
+    organization: VirtualWaiter
+    token:
+      secure: $SONARCLOUD_TOKEN
+
 script:
   - mvn clean package sonar:sonar -Dsonar.projectKey=menus -Dsonar.organization=VirtualWaiter -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
 deploy:
