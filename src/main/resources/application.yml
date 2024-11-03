@@ -5,7 +5,5 @@ spring:
     url: r2dbc:mysql://localhost:3307/vwrestaurant_des
     username: root
     password: Codigo1998
-server:
-  port: 8085
 
 
