@@ -1,23 +1,12 @@
 language: java
 jdk:
-  - openjdk11
-
-branches:
-  only:
-    - develop_release
-    - master
-
+  - openjdk17
 script:
-  - ./mvnw clean install
-
-# Análisis con SonarCloud
-after_success:
-  - mvn sonar:sonar -Dsonar.projectKey=your_project_key -Dsonar.organization=your_organization -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
-
-# Despliegue en OpenShift
+  - mvn clean package sonar:sonar -Dsonar.projectKey=menus -Dsonar.organization=VirtualWaiter -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
 deploy:
-  provider: openshift
-  api_key: $OPENSHIFT_API_KEY
-  app: your-app-name
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: calm-taiga-00119-7dab71817ebc
   on:
     branch: develop_release
+
