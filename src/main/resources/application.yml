@@ -2,9 +2,13 @@ spring:
   application:
     name: menu
   r2dbc:
-    url: r2dbc:mysql://localhost:3307/vwrestaurant_des
-    username: root
-    password: Codigo1998
+    url: r2dbc:postgresql://cc0gj7hsrh0ht8.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6j68cus9omgb4
+    username: u3i4b72lt06a5d
+    password: p6391a7bcd8d60d3c8fe3327f11db0094b38f3c16ca1b3d860ecabcae31bb97b0
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: ${PORT:8085}
 
