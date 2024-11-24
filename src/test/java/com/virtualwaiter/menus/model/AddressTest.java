@@ -13,7 +13,6 @@ public class AddressTest {
 
     //Then
     assertThat(address).isNotNull();
-
     assertThat(address.getId()).isNull();
     assertThat(address.getCountry()).isNull();
     assertThat(address.getZipCode()).isNull();
