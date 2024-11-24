@@ -47,7 +47,7 @@ jobs:
       - name: Set up Heroku
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
-          echo ${{ secrets.HEROKU_API_KEY }} | heroku auth:token
+          echo ${{ secrets.HEROKU_API_KEY }} | heroku auth:login --token
           heroku git:remote -a calm-taiga-00119
 
       # 3. Desplegar en Heroku
