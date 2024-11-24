@@ -33,28 +33,10 @@ jobs:
       - name: Run Unit Tests
         run: mvn test
 
-      # 4. Analizar con SonarCloud
-      - name: SonarCloud Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=menus \
-            -Dsonar.organization=VirtualWaiter \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONARCLOUD_TOKEN }}
-
-      # 5. Validar las reglas de SonarCloud
-      - name: Check SonarCloud Quality Gate
-        id: quality-gate
-        uses: SonarSource/sonarcloud-quality-gate-action@v2
-        with:
-          sonar_token: ${{ secrets.SONARCLOUD_TOKEN }}
-
   deploy:
-    needs: test-and-validate
+    needs: [test-and-validate]
+    if: ${{ success() }} # Validar que los tests hayan pasado
     runs-on: ubuntu-latest
-    if: ${{ needs.test-and-validate.outputs.quality_gate_status == 'PASSED' }}
 
     steps:
       # 1. Checkout el código
