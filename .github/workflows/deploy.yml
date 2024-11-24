@@ -47,7 +47,7 @@ jobs:
       # 5. Validar las reglas de SonarCloud
       - name: Check SonarCloud Quality Gate
         id: quality-gate
-        uses: sonarsource/sonarcloud-quality-gate-action@v2
+        uses: SonarSource/sonarcloud-quality-gate-action@v2
         with:
           sonar_token: ${{ secrets.SONARCLOUD_TOKEN }}
 
