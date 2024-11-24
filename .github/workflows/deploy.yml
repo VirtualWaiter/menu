@@ -24,7 +24,7 @@ jobs:
           echo "$HEROKU_API_KEY" | heroku auth:token
 
       - name: Add Heroku remote
-        run: heroku git:remote -a <your-heroku-app-name>
+        run: heroku git:remote -a calm-taiga-00119
 
       - name: Deploy to Heroku
         run: |
