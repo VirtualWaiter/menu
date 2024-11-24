@@ -52,9 +52,9 @@ jobs:
           sonar_token: ${{ secrets.SONARCLOUD_TOKEN }}
 
   deploy:
-    needs: [test-and-validate]
-    if: ${{ steps.quality-gate.outputs.status == 'PASSED' }} # Validar que pasa el quality gate de SonarCloud
+    needs: test-and-validate
     runs-on: ubuntu-latest
+    if: ${{ needs.test-and-validate.outputs.quality_gate_status == 'PASSED' }}
 
     steps:
       # 1. Checkout el código
